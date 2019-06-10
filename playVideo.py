@@ -4,7 +4,7 @@ from moviepy.editor import *
 import pygame
 
 
-vidSource = "F:\\Downloads\\[HorribleSubs] Fairy Tail Final Season - 311 [720p].mkv"
+vidSource = "F:\\Downloads\\test.mkv"
 
 def faceRecognize():
 
