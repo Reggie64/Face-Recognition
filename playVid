@@ -8,12 +8,8 @@ import threading
 import time
 
 
-vidSource = "C:\\Users\\thunderstruck\\Videos\\test.mp4"
-graphicVid = "C:\\Users\\thunderstruck\\Videos\\test.mp4"       
-
-
-
-def playVideo(vidSource):
+def playVideoA():
+    vidSource = "F:\\Downloads\\[HorribleSubs] 91 Days - 13 [720p].mkv"
     print("Playing Video\n")
     pygame.init()
     pygame.display.set_caption('Face')
@@ -26,13 +22,33 @@ def playVideo(vidSource):
     print('Finished Video\n')
     pygame.quit()
 
+def playVideoB():
+    graphicVid = "C:\\Users\\thunderstruck\\Videos\\test.mp4"
+    print("Playing Video\n")
+    pygame.init()
+    pygame.display.set_caption('Face')
+    infoObject = pygame.display.Info()
+    display_width = infoObject.current_w
+    display_height = infoObject.current_h
+    vidDisplay = pygame.display.set_mode((display_width, display_height))
+    clip = VideoFileClip(graphicVid)
+    clip.preview()
+    time.sleep(2)
+    clip.close
+    print('Finished Video\n')
+    pygame.quit()
+
 def eyeTrack():
     print("Starting eyetrack\n")
+    time.sleep(5)
+    print("Finishing eyetrack\n")
+    return False
 
 if __name__ == "__main__":
     print("Starting program")
-    vidThread = threading.Thread(target = playVideo(vidSource))
+    vidThread = threading.Thread(target=eyeTrack)
     vidThread.start()
-    eyeTrack()
-
-
+    while eyeTrack() == True:
+        playVideoA()
+    else:
+        playVideoB()
